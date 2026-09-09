@@ -278,6 +278,18 @@ h2,
   background: var(--azul-escuro);
 }
 
+.card-imagem {
+  display: block;
+  width: calc(100% - 32px);
+  height: 150px;
+  object-fit: contain;
+  margin: 16px auto 0;
+  padding: 8px;
+  border-radius: 8px;
+  background: #fffdf9;
+  box-sizing: border-box;
+}
+
 .card-corpo {
   padding: 20px 20px 22px;
   display: flex;

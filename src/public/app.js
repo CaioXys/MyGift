@@ -271,6 +271,14 @@ function createCard(gift) {
 
   card.innerHTML = `
     <div class="card-fita cat-${gift.categoria}"></div>
+    <img
+      class="card-imagem"
+      src="/gifts/${encodeURIComponent(gift.id)}/image"
+      alt="Imagem de ${escapeHTML(gift.nome || 'presente')}"
+      width="296"
+      height="150"
+      decoding="async"
+    />
     <div class="card-corpo">
       <span class="card-categoria">${CATEGORY_NAMES[gift.categoria] || gift.categoria}</span>
       <h3 class="card-nome">${escapeHTML(gift.nome)}</h3>
@@ -281,6 +289,13 @@ function createCard(gift) {
       </button>
     </div>
   `
+
+  const cardImage = card.querySelector('.card-imagem')
+  cardImage.addEventListener('error', () => {
+    if (cardImage.dataset.fallback === 'true') return
+    cardImage.dataset.fallback = 'true'
+    cardImage.src = `/assets/images/${encodeURIComponent(gift.categoria)}.png`
+  })
 
   const btn = card.querySelector('.btn-reservar')
   btn.addEventListener('click', () => openContributionModal(gift))
