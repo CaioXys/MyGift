@@ -6,7 +6,7 @@
   --petroleo: #1b5e63;
   --petroleo-claro: #2d7a80;
   --verde: #74f320;
-  --verde-btn: #8adb41;
+  --verde-preco: #488f0a;
   --roxo: #30004d;
   --girassol: #ffc857;
   --rosa: #ff8fa3;
@@ -325,6 +325,13 @@ h2,
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--texto);
+  margin-bottom: 14px;
+}
+
+.card-valor {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--verde-preco);
   margin-bottom: 14px;
 }
 

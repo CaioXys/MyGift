@@ -283,7 +283,7 @@ function createCard(gift) {
       <span class="card-categoria">${CATEGORY_NAMES[gift.categoria] || gift.categoria}</span>
       <h3 class="card-nome">${escapeHTML(gift.nome)}</h3>
       <p class="card-descricao">${escapeHTML(gift.descricao || '')}</p>
-      ${gift.valorSugerido ? `<p class="card-preco">${formatCurrency(gift.valorSugerido)} via Pix</p>` : ''}
+      ${gift.valorSugerido ? `<p class="card-preco"><span class="card-valor">${formatCurrency(gift.valorSugerido)}</span> via Pix</p>` : ''}
       <button class="btn-reservar" data-id="${gift.id}">
         Quero dar esse presente
       </button>
