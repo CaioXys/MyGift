@@ -31,7 +31,6 @@ model Gift {
   name           String
   description    String?
   category       String
-  imageCategory  Bytes?         @map("image_category")
   suggestedValue Decimal?       @map("suggested_value") @db.Decimal(10, 2)
   contributions  Contribution[]
 

@@ -273,7 +273,7 @@ function createCard(gift) {
     <div class="card-fita cat-${gift.categoria}"></div>
     <img
       class="card-imagem"
-      src="/gifts/${encodeURIComponent(gift.id)}/image"
+      src="/assets/images/${encodeURIComponent(gift.categoria)}.png"
       alt="Imagem de ${escapeHTML(gift.nome || 'presente')}"
       width="296"
       height="150"
@@ -294,7 +294,7 @@ function createCard(gift) {
   cardImage.addEventListener('error', () => {
     if (cardImage.dataset.fallback === 'true') return
     cardImage.dataset.fallback = 'true'
-    cardImage.src = `/assets/images/${encodeURIComponent(gift.categoria)}.png`
+    cardImage.src = '/assets/images/outro.png'
   })
 
   const btn = card.querySelector('.btn-reservar')

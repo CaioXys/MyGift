@@ -343,41 +343,6 @@ app.get('/api-docs.json', (_req: Request, res: Response) => {
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
-app.get(
-  '/gifts/:id/image',
-  async (req: Request, res: Response): Promise<void> => {
-    const giftId = Number(req.params.id)
-
-    if (!Number.isInteger(giftId) || giftId <= 0) {
-      res.status(400).json({ erro: 'ID de gift inválido.' })
-      return
-    }
-
-    try {
-      const gift = await prisma.gift.findUnique({
-        where: { id: giftId },
-        select: { imageCategory: true },
-      })
-
-      if (!gift?.imageCategory) {
-        res.status(404).json({ erro: 'Imagem do gift não encontrada.' })
-        return
-      }
-
-      const isPng =
-        gift.imageCategory.length >= 8 &&
-        Buffer.from(gift.imageCategory)
-          .subarray(0, 8)
-          .equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))
-      res.set('Content-Type', isPng ? 'image/png' : 'image/svg+xml')
-      res.send(gift.imageCategory)
-    } catch (error) {
-      console.error(error)
-      res.status(500).json({ erro: 'Não foi possível carregar a imagem.' })
-    }
-  },
-)
-
 // --- Tipos auxiliares ---
 
 type GiftWithContributions = Gift & {
